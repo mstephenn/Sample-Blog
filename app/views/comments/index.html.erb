@@ -1,0 +1,18 @@
+<table>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.username %>: </td>
+        <td><%= comment.comment_text %></td>
+        
+        <td><%= link_to 'Show', [comment.post, comment] %></td>
+        <td><%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %></td>
+        <td><%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Comment', new_post_comment_path %> | <%= link_to 'Back', posts_path %>
