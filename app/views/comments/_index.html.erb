@@ -1,17 +1,18 @@
-<table>
-  <tbody>
-    <% comments.each do |comment| %>
-      <tr>
-        <td><%= comment.user.username %>: </td>
-        <td><%= comment.comment_text %></td>
-        
-        <td><%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %></td>
-        <td><%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div id="comments">
+  <% comments.each do |comment| %>
+  	<div id="comment_<%= comment.id %>">
+	    <div>
+	      <%= comment.user.username %>: <%= comment.comment_text %>
+	    </div>
+	    <div>
+	    	<% if can? :manage, comment %>
+		      <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), remote: true, id: "edit_#{comment.id}" %>
+		      <%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+		    <% end %>  
+	    </div>
+	  </div>  
+    <br>
+  <% end %>
+</div>
 
 <%= render 'comments/form', comment: post.comments.build(user_id: current_user.id) %>

@@ -1,0 +1,3 @@
+$("#comment_<%= @comment.id %>").html('<div><%= j @comment.user.username %>: <%= j @comment.comment_text %></div><div><%= link_to "Edit", edit_post_comment_path(@comment.post, @comment), remote: true %> <%= link_to "Destroy", [@comment.post, @comment], method: :delete, data: { confirm: "Are you sure?" } %></div><br>')
+
+$("#comment_comment_text").val("")

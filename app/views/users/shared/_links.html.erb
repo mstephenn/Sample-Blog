@@ -1,25 +1,18 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
-<% end -%>
+<div id='cssmenu'>
+	<ul>	
+	   <li>
+	   		<% if controller_name != 'sessions' %>
+		   		<% if user_signed_in? %>
+					  <%= link_to('<span>Logout</span>'.html_safe, destroy_user_session_path, method: :delete) %>        
+					<% else %>
+					  <%= link_to('<span>Login</span>'.html_safe, new_user_session_path)  %>  
+					<% end %>
+				<% end %>	
+			</li>
+	   	<li>
+		   	<%- if devise_mapping.registerable? && controller_name != 'registrations' && !current_user %>
+				  <%= link_to '<span>Sign Up</span>'.html_safe, new_registration_path(resource_name) %>
+				<% end -%>
+	   </li>
+	</ul>
+</div>

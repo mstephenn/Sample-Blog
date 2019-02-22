@@ -11,24 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+  <div class="form-group">
+    <%= form.label :title, class: "content-label" %>
+    <%= form.text_field :title, id: :post_title, class: "input-field" %>
   </div>
 
-  <div class="field">
-    <%= form.label :content_text %>
-    <%= form.text_area :content_text, id: :post_content_text %>
+  <div class="form-group">
+    <%= form.label :content_text, class: "content-label" %>
+    <%= form.text_area :content_text, id: :post_content_text, class: "textarea-field" %>
   </div>
 
-  <div class="field">
-    <%= form.label :content_url %>
-    <%= form.text_field :content_url, id: :post_content_url %>
+  <div class="form-group">
+    <%= form.label :content_url, class: "content-label" %>
+    <%= form.text_field :content_url, id: :post_content_url, class: "input-field" %>
   </div>
 
   <%= form.hidden_field :user_id %>
 
-  <div class="actions">
+  <div class="btn-submit wo-label">
     <%= form.submit %>
   </div>
 <% end %>
