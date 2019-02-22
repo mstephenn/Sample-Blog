@@ -1,25 +1,27 @@
-<% p comment = @comment || comment %>
-<%= form_for([comment.post, comment], :remote => true) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+<div class="form-style-2">
+  <% comment = @comment || comment %>
+  <%= form_for([comment.post, comment], :remote => true) do |form| %>
+    <% if comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-      <ul>
-      <% comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.text_area :comment_text, id: :comment_comment_text, class: "textarea-field" %>
+    </div>  
+
+    <%= form.hidden_field :post_id %>
+    <%= form.hidden_field :user_id %>
+
+    <div class="actions">
+      <%= form.submit "Post Comment" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.text_area :comment_text, id: :comment_comment_text %>
-  </div>
-
-  <%= form.hidden_field :post_id %>
-  <%= form.hidden_field :user_id %>
-
-  <div class="actions">
-    <%= form.submit "Post Comment" %>
-  </div>
-<% end %>
+</div>

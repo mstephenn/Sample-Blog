@@ -213,8 +213,16 @@
 .content-div {
   position: relative;
   width: 100%;  
-  margin-bottom: 5px;
-  color: #fff;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  color: #000;
   background: #E8E2DF;
   overflow: hidden;
+  border-radius: 5px;
+  line-height: 2em;
+}
+
+.content-div a {
+  padding-left: 10px;
+  margin-bottom: 5px;
 }

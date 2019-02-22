@@ -23,6 +23,9 @@ class CommentsController < ApplicationController
   def edit
     post = Post.find(params[:post_id])
     @comment = post.comments.find(params[:id])
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   # POST /comments
@@ -33,6 +36,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to([@comment.post, @comment], notice: 'Comment was successfully created.') }
+        format.js {}
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -48,6 +52,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to([@comment.post, @comment], notice: 'Comment was successfully updated.') }
+        format.js {}
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -64,7 +69,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(post_comments_url) }
+      format.html { redirect_to post }
       format.json { head :no_content }
     end
   end

@@ -1,17 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="form-style-3">
+  <div class="form-style-2-heading"><%= @post.title %></div>
+  <div class="content-div">
+	  <%= @post.content_text %>
+	  <br>
+	  by <strong><%= @post.user.username.capitalize %></strong>
+	</div>  
 
-<p>
-  <h2><%= @post.title %></h2>
-</p>
-
-<p>
-  <%= @post.content_text %>
-</p>
-
-<p>
-  by <strong><%= @post.user.username.capitalize %></strong>
-</p>
-
-<%= render "comments/index", comments: @comments, post: @post %>
-<br>
-<%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Back', posts_path %>
+	<%= render "comments/index", comments: @comments, post: @post %>
+	<br>
+	<%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Back', posts_path %>
+</div>	
