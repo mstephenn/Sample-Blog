@@ -1,22 +1,27 @@
 <div class="form-style-3">
-	<div class="form-style-2-heading">Comments</div>
-	<div id="comments">
-	  <% comments.each do |comment| %>
-	  	<div id="comment_<%= comment.id %>">
-		    <div>
-		      <strong><%= comment.user.username %>:</strong> <%= comment.comment_text %>
-		    </div>
-		    <div>
-		    	<% if can? :manage, comment %>
-			      <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), remote: true, id: "edit_#{comment.id}" %>
-			      <%= link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-			    <% end %>  
-		    </div>
-		  </div>  
-	    <br>
-	  <% end %>
-	</div>
+	<% if comments.size != 0 %>
+		<div class="form-style-2-heading">Comments</div>
+		<div id="comments">
+		  <% comments.each do |comment| %>
+		  	<div id="comment_<%= comment.id %>">
+			    <div class="comment-info">
+			      <strong><%= comment.user.username %>:</strong> <%= comment.comment_text %>
+			    </div>
+			    <div>
+			    	<% if can? :manage, comment %>
+				      <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), remote: true, id: "edit_#{comment.id}" %>
+				      <%= link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+				    <% end %>  
+			    </div>
+			  </div>  
+		    <br>
+		  <% end %>
+		</div>
+	<% end %>	
 
-	<%= render 'comments/form', comment: post.comments.build(user_id: current_user.id) %>
+	<% if can? :create, Comment %>
+		<strong>Add Your Comment:</strong>
+		<%= render 'comments/form', comment: post.comments.build(user_id: current_user.id) %>
+	<% end %>	
 
 </div>

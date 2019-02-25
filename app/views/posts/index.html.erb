@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
 <div class="form-style-3">
   <div class="form-style-2-heading">Posts</div>
-    <% @posts.each do |post| %>
-      <div class="content-div">
-        <h2><%= post.content_url != '' ? (link_to post.title, post.content_url) : (link_to post.title, post) %></h2>
-
-        <%= link_to 'Comments', post_comments_path(post) %>
-          <% if can? :manage, post %>
-            | <%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
-          <% end %>
-      </div>        
-    <% end %>
-  <br>
   <% if can? :create, Post %>
-    <%= link_to 'New Post', new_post_path %>
+    <%= link_to '<input type="button" value="New Post">'.html_safe, new_post_path %>
+  <% end %>
+  <br>
+  <br>
+  <% @posts.each do |post| %>
+    <div class="content-div">
+      <h2><%= post.content_url != '' ? (link_to post.title, post.content_url) : (link_to post.title, post) %></h2>
+
+      <%= link_to 'Comments', post %>
+      <% if can? :manage, post %>
+        | <%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
+    </div>        
   <% end %>
 </div>  
