@@ -1,0 +1,23 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+/public/uploads
+
+# test coverage reports (SimpleCov)
+/coverage
+
+# IDE filess
+/.idea
+*.swo
+*.swp
+.vscode/settings.json
+
+# local file system junk
+*.DS_Store
+env.yml
+
+# Import files
+/lib/import_files
