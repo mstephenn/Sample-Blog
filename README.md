@@ -1,24 +1,16 @@
-# README
+# Sample Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+Before starting this application you need to install docker with ubuntu system.
 
-* Configuration
+After installing docker. Clone this repository, and run the following command.
+```
+bash start.sh
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+tadaaa application is up and ready.
