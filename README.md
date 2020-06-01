@@ -12,5 +12,3 @@ After installing docker. Clone this repository, and run the following command.
 ```
 bash start.sh
 ```
-
-tadaaa application is up and ready.
